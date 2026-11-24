@@ -156,14 +156,15 @@ jobs:
             runs_tests: 'ON'
 
             # renovate: depName=macos
-          - os: macos-26
-            c: gcc-15
-            cxx: g++-15
-            # renovate: depName=macos
-            name: "macOS 26 GCC 15"
-            cmake_flags: "-DBUILD_SHARED_LIBS=OFF"
-            cmake_generator: Ninja
-            runs_tests: 'ON'
+          # SFML pe macOS contine cod Objective-C++ si nu se compileaza cu GCC (rand dezactivat)
+          # - os: macos-26
+          # c: gcc-15
+          # cxx: g++-15
+          # # renovate: depName=macos
+          # name: "macOS 26 GCC 15"
+          # cmake_flags: "-DBUILD_SHARED_LIBS=OFF"
+          # cmake_generator: Ninja
+          # runs_tests: 'ON'
 
             # renovate: depName=windows
           - os: windows-2025

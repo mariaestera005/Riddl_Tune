@@ -57,6 +57,12 @@ set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 set(SFML_BUILD_AUDIO OFF CACHE BOOL "" FORCE)
 set(SFML_BUILD_NETWORK OFF CACHE BOOL "" FORCE)
 
+# MSVC + ASan: bibliotecile din FetchContent (SFML) trebuie compilate cu aceleasi
+# optiuni ca restul, altfel apare LNK2038 (annotate_string/vector/optional)
+if(MSVC AND USE_ASAN)
+    add_compile_options("$<$<CONFIG:Debug>:/fsanitize=address>")
+endif()
+
 FetchContent_MakeAvailable(SFML nlohmann_json)
 
 ###############################################################################
