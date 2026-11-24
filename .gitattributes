@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.h    linguist-language=C++
 *.hpp  linguist-language=C++
 
@@ -8,3 +9,12 @@
 *.js   linguist-detectable=false
 data/**      linguist-vendored
 assets/**    linguist-vendored
+=======
+*.cpp linguist-language=C++
+*.cc linguist-language=C++
+*.cxx linguist-language=C++
+*.h linguist-language=C++
+*.hpp linguist-language=C++
+*.hh linguist-language=C++
+*.hxx linguist-language=C++
+>>>>>>> 807391fa30ea44fb476c61c7a676eeb558c67615
