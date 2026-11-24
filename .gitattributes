@@ -1,2 +1,5 @@
 *.sh linguist-vendored
-scripts/* linguist-vendored
+*.bash linguist-vendored
+scripts/** linguist-vendored
+cmake/** linguist-vendored
+.github/** linguist-vendored
