@@ -7,17 +7,6 @@
 ext/private/json.hpp linguist-vendored=false
 ext/private/json.hpp linguist-generated=false
 
-
-*.sh            linguist-detectable=false
-*.command       linguist-detectable=false
-*.cmake         linguist-detectable=false
-CMakeLists.txt  linguist-detectable=false
-*.json          linguist-detectable=false
-*.html          linguist-detectable=false
-*.css           linguist-detectable=false
-*.js            linguist-detectable=false
-
-# --- Resurse si fisiere interne ---
 assets/**     linguist-vendored
 .github/**    linguist-vendored
 scripts/**    linguist-vendored
