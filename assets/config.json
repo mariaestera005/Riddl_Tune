@@ -1,0 +1,16 @@
+{
+  "keywords": [
+    "CONCERT",
+    "FESTIVAL",
+    "MELODIE",
+    "PLAYLIST",
+    "MUZICA",
+    "REFREN",
+    "HITURI"
+  ],
+  "shuffle": true,
+  "pointsPerLetter": 10,
+  "keywordBonus": 50,
+  "hintPenalty": 5,
+  "wrongPenalty": 3
+}
