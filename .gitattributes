@@ -1,13 +1,24 @@
-
+# --- C++: forteaza headerele ca C++ (nu C / Objective-C) ---
 *.h    linguist-language=C++
 *.hpp  linguist-language=C++
-*.json linguist-detectable=false
-*.html linguist-detectable=false
-*.css  linguist-detectable=false
-*.js   linguist-detectable=false
-data/**      linguist-vendored
-assets/**    linguist-vendored
-<<<<<<< HEAD
+*.cpp  linguist-language=C++
 
-=======
->>>>>>> 87ad0960f9d2cb7937ba5819785466fd2d2de56b
+# --- Biblioteca nlohmann/json: ramane numarata ca C++ ---
+ext/private/json.hpp linguist-vendored=false
+ext/private/json.hpp linguist-generated=false
+
+# --- Scoate din statistica ce nu e C++ ---
+*.sh            linguist-detectable=false
+*.command       linguist-detectable=false
+*.cmake         linguist-detectable=false
+CMakeLists.txt  linguist-detectable=false
+*.json          linguist-detectable=false
+*.html          linguist-detectable=false
+*.css           linguist-detectable=false
+*.js            linguist-detectable=false
+
+# --- Resurse si fisiere interne ---
+assets/**     linguist-vendored
+.github/**    linguist-vendored
+scripts/**    linguist-vendored
+cmake/**      linguist-vendored
