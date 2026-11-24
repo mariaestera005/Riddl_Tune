@@ -1,8 +1,6 @@
 
 *.h    linguist-language=C++
 *.hpp  linguist-language=C++
-
-# date, resurse și fișiere care nu sunt cod
 *.json linguist-detectable=false
 *.html linguist-detectable=false
 *.css  linguist-detectable=false
