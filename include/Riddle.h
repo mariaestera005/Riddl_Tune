@@ -19,7 +19,7 @@ public:
 
     // Pastreaza doar literele A-Z majuscule, fara diacritice.
     static std::string normalizeText(const std::string& rawText);
-    std::string getTitle() const { return title; }
+    const std::string& getTitle() const { return title; }
     std::string getNormalizedArtist() const;
     bool matchesArtist(const std::string& guess) const;
 
@@ -43,7 +43,7 @@ public:
     std::size_t getLetterPosition() const { return letterPosition; }
     std::size_t getLeftIndent() const { return leftIndent; }
     std::size_t getLength() const { return revealed.size(); }
-    std::string getTitle() const { return track.getTitle(); }
+    const std::string& getTitle() const { return track.getTitle(); }
     char getDisplayChar(std::size_t index) const; // Litera la index, sau _ daca e ascunsa.
     std::size_t countHiddenLetters() const;
 
