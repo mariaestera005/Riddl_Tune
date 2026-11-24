@@ -1,12 +1,13 @@
 
 *.h    linguist-language=C++
 *.hpp  linguist-language=C++
-
-# date, resurse și fișiere care nu sunt cod
 *.json linguist-detectable=false
 *.html linguist-detectable=false
 *.css  linguist-detectable=false
 *.js   linguist-detectable=false
 data/**      linguist-vendored
 assets/**    linguist-vendored
+<<<<<<< HEAD
 
+=======
+>>>>>>> 87ad0960f9d2cb7937ba5819785466fd2d2de56b
