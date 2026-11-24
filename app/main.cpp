@@ -29,10 +29,10 @@ int main() {
                 break;
             } else if (option == 1) {
                 std::size_t row = 0;
-                std::string guess;
                 std::cout << "Row & Artist: ";
                 if (std::cin >> row) {
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::string guess;
                     std::getline(std::cin, guess);
                     std::cout << (session.submitRowGuess(row, guess) ? "Correct!\n\n" : "Wrong!\n\n");
                 }

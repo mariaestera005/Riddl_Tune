@@ -64,8 +64,8 @@ private:
 
     std::size_t computeMaxPivot() const;
     void alignRows();
-    bool isArtistUsed(const std::string& artist, const std::vector<std::string>& used) const;
-    bool buildBacktrack(std::size_t idx, const std::vector<SongTrack>& cands,
+    static bool isArtistUsed(const std::string& artist, const std::vector<std::string>& used);
+    bool buildBacktrack(std::size_t idx, const std::vector<SongTrack>& list,
                         std::vector<bool>& usedTracks, std::vector<std::string>& usedArtists);
 
 public:

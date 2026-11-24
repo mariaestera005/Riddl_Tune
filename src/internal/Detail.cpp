@@ -5,6 +5,7 @@ void Detail::f() const {
     std::cout << "private function f: " << x << "\n";
 }
 
+// cppcheck-suppress unusedFunction
 void Detail::g() {
     ++y;
     f();

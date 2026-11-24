@@ -7,6 +7,7 @@
 #include <random>
 #include <stdexcept>
 
+// cppcheck-suppress missingInclude
 #include "json.hpp"
 
 namespace {
@@ -47,8 +48,8 @@ std::string SongTrack::removeDiacritics(const std::string& rawText) {
 
 std::string SongTrack::Uppercase(const std::string& text) {
     std::string clean;
-    for (std::size_t i = 0; i < text.size(); ++i) {
-        const auto ch = static_cast<unsigned char>(text[i]);
+    for (const char c : text) {
+        const auto ch = static_cast<unsigned char>(c);
         if (std::isalpha(ch) != 0) {
             clean.push_back(static_cast<char>(std::toupper(ch)));
         }
@@ -60,6 +61,7 @@ std::string SongTrack::normalizeText(const std::string &rawText) {
     return Uppercase(removeDiacritics(rawText));
 }
 
+// NOLINTNEXTLINE(modernize-pass-by-value)
 SongTrack::SongTrack(const std::string& trackTitle, const std::string& mainArtist)
     : title(removeDiacritics(trackTitle)), artist(mainArtist) {}
 
@@ -150,6 +152,7 @@ RebusBoard::RebusBoard(const std::string& targetKeyword)
     : keyword(SongTrack::normalizeText(targetKeyword)), keywordGuessed(false) {}
 
 // Rule of Three: copiere, atribuire si destructor pentru tabla de joc.
+// NOLINTNEXTLINE(modernize-use-equals-default)
 RebusBoard::RebusBoard(const RebusBoard& other)
     : keyword(other.keyword), rows(other.rows), keywordGuessed(other.keywordGuessed) {}
 
@@ -170,25 +173,26 @@ RebusBoard::~RebusBoard() {
 std::size_t RebusBoard::computeMaxPivot() const {
     // Cea mai din dreapta pozitie a literei A-B; baza pentru aliniere.
     std::size_t maxPivot = 0;
-    for (std::size_t i = 0; i < rows.size(); ++i) {
-        maxPivot = std::max(maxPivot, rows[i].getLetterPosition());
+    for (const auto& row : rows) {
+        maxPivot = std::max(maxPivot, row.getLetterPosition());
     }
     return maxPivot;
 }
 
 void RebusBoard::alignRows() {
     const std::size_t maxPivot = computeMaxPivot();
-    for (std::size_t i = 0; i < rows.size(); ++i) {
-        rows[i].setLeftIndent(maxPivot - rows[i].getLetterPosition());
+    for (auto& row : rows) {
+        row.setLeftIndent(maxPivot - row.getLetterPosition());
     }
 }
 
-bool RebusBoard::isArtistUsed(const std::string& artist, const std::vector<std::string>& used) const {
+bool RebusBoard::isArtistUsed(const std::string& artist, const std::vector<std::string>& used) {
     return std::find(used.begin(), used.end(), artist) != used.end();
 }
 
 // Backtracking recursiv: alegem cate o piesa pentru fiecare litera a cuvantului
 // vertical; daca o alegere blocheaza urmatoarele randuri, o anulam si incercam alta.
+// NOLINTNEXTLINE(misc-no-recursion)
 bool RebusBoard::buildBacktrack(std::size_t idx, const std::vector<SongTrack>& list,
                                 std::vector<bool>& usedTracks, std::vector<std::string>& usedArtists) {
     if (idx == keyword.size()) {
@@ -243,12 +247,7 @@ bool RebusBoard::isCompleted() const {
     if (!isValid()) {
         return false;
     }
-    for (std::size_t i = 0; i < rows.size(); ++i) {
-        if (!rows[i].isSolved()) {
-            return false;
-        }
-    }
-    return true;
+    return std::ranges::all_of(rows, [](const RebusRow& row) { return row.isSolved(); });
 }
 
 std::size_t RebusBoard::getRowHiddenCount(std::size_t rowIndex) const {
@@ -268,8 +267,8 @@ bool RebusBoard::guessKeyword(const std::string& keywordGuess) {
     if (!clean.empty() && clean == keyword) {
         // Dupa ghicire, completam litera A-B in fiecare rand.
         keywordGuessed = true;
-        for (std::size_t i = 0; i < rows.size(); ++i) {
-            rows[i].revealKeywordLetter();
+        for (auto& row : rows) {
+            row.revealKeywordLetter();
         }
         return true;
     }
@@ -277,8 +276,8 @@ bool RebusBoard::guessKeyword(const std::string& keywordGuess) {
 }
 
 void RebusBoard::revealAll() {
-    for (std::size_t i = 0; i < rows.size(); ++i) {
-        rows[i].revealAll();
+    for (auto& row : rows) {
+        row.revealAll();
     }
     keywordGuessed = true;
 }
@@ -349,8 +348,8 @@ bool GameSession::startNewRound() {
         std::mt19937 gen(std::random_device{}());
         std::shuffle(songKeywords.begin(), songKeywords.end(), gen);
     }
-    for (std::size_t i = 0; i < songKeywords.size(); ++i) {
-        RebusBoard nextBoard(songKeywords[i]);
+    for (const auto& songKeyword : songKeywords) {
+        RebusBoard nextBoard(songKeyword);
         if (nextBoard.generate(catalog, shuffleMode)) {
             board = nextBoard;
             score = 0;

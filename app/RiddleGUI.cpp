@@ -163,7 +163,8 @@ void RiddleGUI::draw() {
         }
         std::string title = row.getTitle();
         if (title.size() > 26) {
-            title = title.substr(0, 23) + "...";
+            title.resize(23);
+            title += "...";
         }
         drawText(std::to_string(r + 1) + ". " + title, 18, {40.f, y + height / 2.f - 14.f},
                  row.isSolved() ? GREEN : LIGHT);
