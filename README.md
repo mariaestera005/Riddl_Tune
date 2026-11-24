@@ -135,13 +135,5 @@ Testele verifică normalizarea textului, potrivirea artistului, generarea tablei
 
 ## 📚 Resurse
 
-- [nlohmann/json](https://github.com/nlohmann/json) – citirea fișierelor JSON (licență MIT)
+- [nlohmann/json](https://github.com/nlohmann/json) – citirea fișierelor JSON
 - [SFML 3.0.0](https://www.sfml-dev.org/) – interfața grafică
-- ⚠️ Sursa datelor din `assets/tracks.json`: *(completează de unde ai luat melodiile)*
-- ⚠️ Fontul din `assets/font.ttf`: *(completează numele fontului și licența)*
-
----
-
-## 👩‍💻 Autor
-
-⚠️ *Numele tău · grupa · Facultatea de Matematică și Informatică, Universitatea din București*
