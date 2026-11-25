@@ -1,10 +1,6 @@
-
-*.h    linguist-language=C++
-*.hpp  linguist-language=C++
-*.cpp  linguist-language=C++
-
-
-ext/private/json.hpp linguist-vendored=false
-ext/private/json.hpp linguist-generated=false
+ext/** linguist-vendored
+cmake/** linguist-vendored
+scripts/** linguist-vendored
+launcher.command linguist-vendored
 
 
