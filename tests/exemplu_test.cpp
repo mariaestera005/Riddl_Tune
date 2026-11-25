@@ -1,5 +1,3 @@
-// Teste simple cu assert, fara framework (ramura main nu include unul).
-// assert() dispare cand NDEBUG e definit, deci il dezactivam ca testele sa ruleze mereu.
 #undef NDEBUG
 #include <cassert>
 #include <vector>
