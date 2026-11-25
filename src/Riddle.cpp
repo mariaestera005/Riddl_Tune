@@ -6,7 +6,8 @@
 #include <iomanip>
 #include <random>
 #include <stdexcept>
-#include "json.hpp"
+#include <nlohmann/json.hpp>
+
 
 namespace {
 constexpr std::size_t CELL_WIDTH = 3;
