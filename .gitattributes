@@ -7,7 +7,4 @@
 ext/private/json.hpp linguist-vendored=false
 ext/private/json.hpp linguist-generated=false
 
-assets/**     linguist-vendored
-.github/**    linguist-vendored
-scripts/**    linguist-vendored
-cmake/**      linguist-vendored
+
