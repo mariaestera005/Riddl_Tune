@@ -6,8 +6,6 @@
 #include <iomanip>
 #include <random>
 #include <stdexcept>
-
-// cppcheck-suppress missingInclude
 #include "json.hpp"
 
 namespace {
@@ -61,7 +59,7 @@ std::string SongTrack::normalizeText(const std::string &rawText) {
     return Uppercase(removeDiacritics(rawText));
 }
 
-// NOLINTNEXTLINE(modernize-pass-by-value)
+
 SongTrack::SongTrack(const std::string& trackTitle, const std::string& mainArtist)
     : title(removeDiacritics(trackTitle)), artist(mainArtist) {}
 
@@ -152,7 +150,6 @@ RebusBoard::RebusBoard(const std::string& targetKeyword)
     : keyword(SongTrack::normalizeText(targetKeyword)), keywordGuessed(false) {}
 
 // Rule of Three: copiere, atribuire si destructor pentru tabla de joc.
-// NOLINTNEXTLINE(modernize-use-equals-default)
 RebusBoard::RebusBoard(const RebusBoard& other)
     : keyword(other.keyword), rows(other.rows), keywordGuessed(other.keywordGuessed) {}
 
@@ -192,7 +189,6 @@ bool RebusBoard::isArtistUsed(const std::string& artist, const std::vector<std::
 
 // Backtracking recursiv: alegem cate o piesa pentru fiecare litera a cuvantului
 // vertical; daca o alegere blocheaza urmatoarele randuri, o anulam si incercam alta.
-// NOLINTNEXTLINE(misc-no-recursion)
 bool RebusBoard::buildBacktrack(std::size_t idx, const std::vector<SongTrack>& list,
                                 std::vector<bool>& usedTracks, std::vector<std::string>& usedArtists) {
     if (idx == keyword.size()) {
@@ -363,7 +359,7 @@ bool GameSession::submitRowGuess(std::size_t rowNumber, const std::string& artis
     if (rowNumber == 0 || rowNumber > board.getRowCount()) {
         return false;
     }
-    // Punctele se acorda pentru literele ascunse inainte de ghicire.
+   
     const std::size_t hidden = board.getRowHiddenCount(rowNumber - 1);
     if (hidden == 0) {
         return true;
